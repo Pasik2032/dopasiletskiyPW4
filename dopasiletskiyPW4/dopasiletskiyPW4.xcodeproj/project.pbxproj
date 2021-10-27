@@ -10,7 +10,6 @@
 		E361146C27244A1200D37140 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361146B27244A1200D37140 /* AppDelegate.swift */; };
 		E361146E27244A1200D37140 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361146D27244A1200D37140 /* SceneDelegate.swift */; };
 		E361147027244A1200D37140 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E361146F27244A1200D37140 /* ViewController.swift */; };
-		E361147627244A1200D37140 /* dopasiletskiyPW4.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E361147427244A1200D37140 /* dopasiletskiyPW4.xcdatamodeld */; };
 		E361147827244A1800D37140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E361147727244A1800D37140 /* Assets.xcassets */; };
 		E361147B27244A1800D37140 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E361147927244A1800D37140 /* LaunchScreen.storyboard */; };
 		E36114872724669900D37140 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36114862724669900D37140 /* NoteCell.swift */; };
@@ -26,7 +25,6 @@
 		E361146B27244A1200D37140 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E361146D27244A1200D37140 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E361146F27244A1200D37140 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E361147527244A1200D37140 /* dopasiletskiyPW4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dopasiletskiyPW4.xcdatamodel; sourceTree = "<group>"; };
 		E361147727244A1800D37140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E361147A27244A1800D37140 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E361147C27244A1800D37140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				E361147727244A1800D37140 /* Assets.xcassets */,
 				E361147927244A1800D37140 /* LaunchScreen.storyboard */,
 				E361147C27244A1800D37140 /* Info.plist */,
-				E361147427244A1200D37140 /* dopasiletskiyPW4.xcdatamodeld */,
 				E36114862724669900D37140 /* NoteCell.swift */,
 			);
 			path = dopasiletskiyPW4;
@@ -156,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E361147027244A1200D37140 /* ViewController.swift in Sources */,
-				E361147627244A1200D37140 /* dopasiletskiyPW4.xcdatamodeld in Sources */,
 				E36114872724669900D37140 /* NoteCell.swift in Sources */,
 				E361146C27244A1200D37140 /* AppDelegate.swift in Sources */,
 				E361148927246EA700D37140 /* NoteViewController.swift in Sources */,
@@ -367,16 +363,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E361147427244A1200D37140 /* dopasiletskiyPW4.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E361147527244A1200D37140 /* dopasiletskiyPW4.xcdatamodel */,
-			);
-			currentVersion = E361147527244A1200D37140 /* dopasiletskiyPW4.xcdatamodel */;
-			path = dopasiletskiyPW4.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		E3DE81272724AFB200216F63 /* CoreDataNotes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

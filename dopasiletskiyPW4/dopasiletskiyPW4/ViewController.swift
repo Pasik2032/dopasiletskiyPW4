@@ -15,13 +15,12 @@ class ViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var emptyCollectionLabel: UILabel!
     
     var notes: [Note] = [] {
-        
         didSet {
             emptyCollectionLabel.isHidden = notes.count != 0
             notesCollectionView.reloadData()
         }
-        
     }
+    
     let context: NSManagedObjectContext = {
         let container = NSPersistentContainer(name: "CoreDataNotes")
         container.loadPersistentStores { _, error in
@@ -29,7 +28,6 @@ class ViewController: UIViewController, UICollectionViewDataSource {
                 fatalError("Container loading failed")
             }
         }
-        
         return container.viewContext
     }()
     
@@ -42,7 +40,6 @@ class ViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadData()
-        // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action:
                                                                 #selector(createNote(sender:)))
     }
@@ -52,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDataSource {
             try? context.save()
         }
         if let notes = try? context.fetch(Note.fetchRequest()) {
-            self.notes = notes
+            self.notes = (notes as? [Note] ?? [])
         } else {
             self.notes = []
         }
@@ -60,8 +57,9 @@ class ViewController: UIViewController, UICollectionViewDataSource {
     
     func loadData() {
         if let notes = try? context.fetch(Note.fetchRequest()) {
-            self.notes = notes.sorted(by:
-                                        { $0.creationDate.compare($1.creationDate) == .orderedDescending})
+            let a = (notes as? [Note] ?? [])
+            self.notes = a.sorted(by:
+                                    { $0.creationDate.compare($1.creationDate) == .orderedDescending})
         } else {
             self.notes = []
         }
@@ -84,31 +82,26 @@ class ViewController: UIViewController, UICollectionViewDataSource {
                                                 "NoteCell", for: indexPath) as! NoteCell
         let note = notes[indexPath.row]
         cell.titleLabel.text = note.title
-        cell.descriptionLabel.text = note.description
+        print( note.description)
+        cell.descriptionLabel.text = note.descriptionText
         return cell }
-    
-    struct Note {
-        let title: String
-        let description: String
-    }
 }
 
 extension ViewController: UICollectionViewDelegate {
-func collectionView(_ collectionView: UICollectionView,
-contextMenuConfigurationForItemAt indexPath: IndexPath, point:
-CGPoint) -> UIContextMenuConfiguration? {
-let identifier = "\(indexPath.row)" as NSString
-    return UIContextMenuConfiguration(identifier: identifier,
-    previewProvider: .none) { _ in
-    let deleteAction = UIAction(title: "Delete", image:
-    UIImage(systemName: "trash"), attributes:
-    UIMenuElement.Attributes.destructive) { value in
-    self.context.delete(self.notes[indexPath.row])
-    self.saveChanges()
+    func collectionView(_ collectionView: UICollectionView,
+                        contextMenuConfigurationForItemAt indexPath: IndexPath, point:
+                            CGPoint) -> UIContextMenuConfiguration? {
+        let identifier = "\(indexPath.row)" as NSString
+        return UIContextMenuConfiguration(identifier: identifier,
+                                          previewProvider: .none) { _ in
+            let deleteAction = UIAction(title: "Delete", image:
+                                            UIImage(systemName: "trash"), attributes:
+                                                UIMenuElement.Attributes.destructive) { value in
+                self.context.delete(self.notes[indexPath.row])
+                self.saveChanges()
+            }
+                                            return UIMenu(title: "", image: nil, children: [deleteAction])
+        }
     }
-    return UIMenu(title: "", image: nil, children: [deleteAction])
-      }
-    }
-    
 }
 
